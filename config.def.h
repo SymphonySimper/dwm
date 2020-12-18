@@ -19,9 +19,9 @@ static const char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
-	"picom", NULL,
 	"nitrogen","--restore" , NULL,
-	NULL /* terminate */
+    "wmname","LG3D",NULL,
+    NULL /* terminate */
 };
 
 /* tagging */
