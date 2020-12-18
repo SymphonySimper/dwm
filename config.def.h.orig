@@ -105,6 +105,10 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
 	{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
 
+	/* Cycle stack */
+	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
+
 	/* Volume */
 	{MODKEY, XK_F2, spawn, {.v = downvol}},
 	{MODKEY, XK_F3, spawn, {.v = upvol}},
