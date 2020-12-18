@@ -19,9 +19,9 @@ static const char *colors[][3] = {
 };
 
 static const char *const autostart[] = {
-	"nitrogen","--restore" , NULL,
-    "wmname","LG3D",NULL,
-    NULL /* terminate */
+	"nitrogen", "--restore", NULL,
+	"wmname", "LG3D", NULL,
+	NULL /* terminate */
 };
 
 /* tagging */
@@ -102,11 +102,17 @@ static Key keys[] = {
 	{MODKEY, XK_period, focusmon, {.i = +1}},
 	{MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
 	{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-	{MODKEY, XK_F2, spawn, {.v = downvol}}, /* Volume */
+
+	/* Volume */
+	{MODKEY, XK_F2, spawn, {.v = downvol}},
 	{MODKEY, XK_F3, spawn, {.v = upvol}},
 	{MODKEY, XK_F4, spawn, {.v = mutevol}},
-	{MODKEY, XK_F5, spawn, {.v = brupcmd}}, /* Brightness */
+
+	/* Brightness */
+	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
 	{MODKEY, XK_F6, spawn, {.v = brdowncmd}},
+
+	/* Tag Keys */
 	TAGKEYS(XK_1, 0)
 		TAGKEYS(XK_2, 1)
 			TAGKEYS(XK_3, 2)
@@ -115,7 +121,11 @@ static Key keys[] = {
 						TAGKEYS(XK_6, 5)
 							TAGKEYS(XK_7, 6)
 								TAGKEYS(XK_8, 7)
-									TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+									TAGKEYS(XK_9, 8)
+
+	/* Restart and Quit dwm */
+	{MODKEY | ShiftMask, XK_q, quit, {0}},
+	{MODKEY | ShiftMask, XK_r, quit, {1}},
 };
 
 /* button definitions */
