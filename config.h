@@ -1,33 +1,39 @@
+
 // IMPORTS
 #include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;	/* snap pixel */
-static const int showbar = 0;			/* 0 means no bar */
-static const int topbar = 1;			/* 0 means bottom bar */
 
-static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 2;        /* vertical padding for statusbar */
+/* Bar */
+static const int showbar = 0;	  /* 0 means no bar */
+static const int topbar = 1;	  /* 0 means bottom bar */
+static const int horizpadbar = 2; /* horizontal padding for statusbar */
+static const int vertpadbar = 2;  /* vertical padding for statusbar */
 
-
+/* Font */
 static const char *fonts[] = {"poppins:size=10"};
 static const char dmenufont[] = "poppins:size=10";
 
+/* Color */
 static const char col_gray1[] = "#111111";
 static const char col_gray2[] = "#222222";
 static const char col_gray3[] = "#444444";
 static const char col_gray4[] = "#bbbbbb";
 static const char col_gray5[] = "#eeeeee";
-static const char col_cyan[] = "#ffffff";
 static const char *colors[][3] = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = {col_gray4, col_gray1, col_gray2},
 	[SchemeSel] = {col_gray5, col_gray1, col_gray3},
 };
 
+/* Auto Startups */
 static const char *const autostart[] = {
+	"picom", "--no-fading-openclose", NULL,
 	"nitrogen", "--restore", NULL,
 	"wmname", "LG3D", NULL,
+	"slstatus", NULL,
 	NULL /* terminate */
 };
 
@@ -61,8 +67,8 @@ static const char *brdowncmd[] = {"xbacklight", "-dec", "2", NULL};
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{"[]=", tile}, /* first entry is default */
-	{"><>", NULL}, /* no layout function means floating behavior */
 	{"[M]", monocle},
+	{"><>", NULL}, /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -86,33 +92,68 @@ static const char *termcmd[] = {"alacritty", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+
+	/* Opens Dmenu */
 	{MODKEY, XK_p, spawn, {.v = dmenucmd}},
+
+	/* Opens Terminal */
 	{MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
+
+	/* Show/Hide Bar */
 	{MODKEY, XK_b, togglebar, {0}},
+
+	/* Change Focus */
 	{MODKEY, XK_j, focusstack, {.i = +1}},
 	{MODKEY, XK_k, focusstack, {.i = -1}},
+
+	/* Vertical Split */
 	{MODKEY, XK_i, incnmaster, {.i = +1}},
+
+	/* Horizontal Split */
 	{MODKEY, XK_d, incnmaster, {.i = -1}},
+
+	/* Increase Size of the window */
 	{MODKEY, XK_h, setmfact, {.f = -0.05}},
 	{MODKEY, XK_l, setmfact, {.f = +0.05}},
+
+	/* IDK what it does */
 	{MODKEY, XK_Return, zoom, {0}},
+
+	/* Switches between tag 1 and 2 */
 	{MODKEY, XK_Tab, view, {0}},
+
+	/* Kills window on focus */
 	{MODKEY | ShiftMask, XK_c, killclient, {0}},
+
+	/* Layout Stack */
 	{MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-	{MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
-	{MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+
+	/* Layout Monocule */
+	{MODKEY, XK_m, setlayout, {.v = &layouts[1]}},
+
+	/* Layout Floating */
+	{MODKEY, XK_f, setlayout, {.v = &layouts[2]}},
+
+	/* Cycles between Stack and Monocule layout */
 	{MODKEY, XK_space, setlayout, {0}},
+
+	/* No Idea what it does */
 	{MODKEY | ShiftMask, XK_space, togglefloating, {0}},
+
+	/* Switch Tab */
 	{MODKEY, XK_0, view, {.ui = ~0}},
+
+	/* Moves winodw on focus to a different tag */
 	{MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
+
 	{MODKEY, XK_comma, focusmon, {.i = -1}},
 	{MODKEY, XK_period, focusmon, {.i = +1}},
 	{MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
 	{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
 
 	/* Cycle stack */
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
+	{MODKEY | ShiftMask, XK_j, rotatestack, {.i = +1}},
+	{MODKEY | ShiftMask, XK_k, rotatestack, {.i = -1}},
 
 	/* Volume */
 	{MODKEY, XK_F2, spawn, {.v = downvol}},
