@@ -31,7 +31,7 @@ static const char *colors[][3] = {
 /* Auto Startups */
 static const char *const autostart[] = {
 	"picom", "--no-fading-openclose", NULL,
-	"nitrogen", "--restore", NULL,
+	"nitrogen","--restore" , NULL,
 	"wmname", "LG3D", NULL,
 	"slstatus", NULL,
 	NULL /* terminate */
@@ -92,6 +92,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
+static const char *cmdprintscreen[]  = { "scrot", "-z","-q","100", "/home/s2b/Pictures/screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -169,7 +170,9 @@ static Key keys[] = {
 	/* Brightness */
 	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
 	{MODKEY, XK_F6, spawn, {.v = brdowncmd}},
-
+	
+	/* Take Screenshot using scrot */
+	{ 0,    XK_Print,      spawn,          {.v = cmdprintscreen } },
 	/* Tag Keys */
 	TAGKEYS(XK_1, 0)
 		TAGKEYS(XK_2, 1)
