@@ -20,18 +20,19 @@ static const char dmenufont[] = "poppins:size=10";
 static const char col_gray1[] = "#111111";
 static const char col_gray2[] = "#222222";
 static const char col_gray3[] = "#444444";
+static const char col_gray6[] = "#777777";
 static const char col_gray4[] = "#bbbbbb";
 static const char col_gray5[] = "#eeeeee";
 static const char *colors[][3] = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = {col_gray4, col_gray1, col_gray2},
-	[SchemeSel] = {col_gray5, col_gray1, col_gray3},
+	[SchemeSel] = {col_gray5, col_gray1, col_gray6},
 };
 
 /* Auto Startups */
 static const char *const autostart[] = {
-	"picom", "--no-fading-openclose", NULL,
-	"nitrogen","--restore" , NULL,
+	"picom","-m","1.0","-i","1.0","-e","1.0", "--no-fading-openclose", NULL,
+	"nitrogen", "--restore", NULL,
 	"wmname", "LG3D", NULL,
 	"slstatus", NULL,
 	NULL /* terminate */
@@ -49,7 +50,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{"Gimp", NULL, NULL, 0, 1, -1},
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{"Firefox", NULL, NULL, 1 << 8, 0, -1},
 };
 
 /* layout(s) */
@@ -92,7 +93,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
-static const char *cmdprintscreen[]  = { "scrot", "-z","-q","100", "/home/s2b/Pictures/screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL };
+static const char *cmdprintscreen[] = {"scrot", "-z", "-q", "100", "/home/s2b/Pictures/screenshots/%Y-%m-%d-%s_$wx$h.jpg", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -170,9 +171,9 @@ static Key keys[] = {
 	/* Brightness */
 	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
 	{MODKEY, XK_F6, spawn, {.v = brdowncmd}},
-	
+
 	/* Take Screenshot using scrot */
-	{ 0,    XK_Print,      spawn,          {.v = cmdprintscreen } },
+	{0, XK_Print, spawn, {.v = cmdprintscreen}},
 	/* Tag Keys */
 	TAGKEYS(XK_1, 0)
 		TAGKEYS(XK_2, 1)
