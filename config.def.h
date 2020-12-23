@@ -32,7 +32,6 @@ static const char *colors[][3] = {
 /* Auto Startups */
 static const char *const autostart[] = {
 	"picom","-m","1.0","-i","1.0","-e","1.0", "--no-fading-openclose", NULL,
-	"nitrogen", "--restore", NULL,
 	"wmname", "LG3D", NULL,
 	"slstatus", NULL,
 	"firefox", NULL,
