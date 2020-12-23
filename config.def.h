@@ -35,6 +35,9 @@ static const char *const autostart[] = {
 	"nitrogen", "--restore", NULL,
 	"wmname", "LG3D", NULL,
 	"slstatus", NULL,
+	"firefox", NULL,
+	"discord", NULL,
+	"spotify", NULL,
 	NULL /* terminate */
 };
 
