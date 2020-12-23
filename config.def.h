@@ -60,6 +60,7 @@ static const Rule rules[] = {
 	{"Spotify", NULL, NULL, 1 << 5, 0, -1},
 	{"Pcmanfm", NULL, NULL, 1 << 6, 0, -1},
 	{"Gimp", NULL, NULL, 1 << 7, 0, -1},
+	{"obs", NULL, NULL, 1 << 8, 0, -1},
 };
 
 /* layout(s) */
