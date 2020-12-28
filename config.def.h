@@ -13,8 +13,8 @@ static const int horizpadbar = 2; /* horizontal padding for statusbar */
 static const int vertpadbar = 2;  /* vertical padding for statusbar */
 
 /* Font */
-static const char *fonts[] = {"poppins:size=10"};
-static const char dmenufont[] = "poppins:size=10";
+static const char *fonts[] = {"poppins:size=10:antialias=true:autohint=true"};
+static const char dmenufont[] = "poppins:size=10:antialias=true:autohint=true";
 
 /* Color */
 static const char col_gray1[] = "#111111";
