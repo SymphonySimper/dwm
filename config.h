@@ -34,7 +34,7 @@ static const char *const autostart[] = {
 	"picom","-m","1.0","-i","1.0","-e","1.0", "--vsync", "--backend", "glx", "--no-fading-openclose", NULL,
 	"wmname", "LG3D", NULL,
 	"slstatus", NULL,
-	"firefox", NULL,
+      /*"firefox", NULL,*/
 	"discord", NULL,
 	"spotify", NULL,
 	NULL /* terminate */
