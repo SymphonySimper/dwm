@@ -62,6 +62,7 @@ static const Rule rules[] = {
 	{"Blender", NULL, NULL, 1 << 7, 0, -1},
 	{"Inkscape", NULL, NULL, 1 << 7, 0, -1},
 	{"obs", NULL, NULL, 1 << 8, 0, -1},
+	{"Steam", NULL, NULL, 1 << 7, 0, -1},
 };
 
 /* layout(s) */
