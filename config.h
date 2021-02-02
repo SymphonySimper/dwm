@@ -60,9 +60,11 @@ static const Rule rules[] = {
 	{"Pcmanfm", NULL, NULL, 1 << 6, 0, -1},
 	{"Gimp", NULL, NULL, 1 << 7, 0, -1},
 	{"Blender", NULL, NULL, 1 << 7, 0, -1},
+	{"kdenlive", NULL, NULL, 1 << 7, 0, -1},
 	{"Inkscape", NULL, NULL, 1 << 7, 0, -1},
 	{"obs", NULL, NULL, 1 << 8, 0, -1},
 	{"Steam", NULL, NULL, 1 << 7, 0, -1},
+	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
 };
 
 /* layout(s) */
