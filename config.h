@@ -109,9 +109,9 @@ static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
 
 //SHCMD
-static const char cmdprintscreen[] = "maim -m 1 | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
-static const char cmdprintwindow[] = "maim -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
-static const char cmdprintregion[] = "maim -s | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
+static const char cmdprintscreen[] = "maim -m 1 -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
+static const char cmdprintwindow[] = "maim -i -u $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
+static const char cmdprintregion[] = "maim -s -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
