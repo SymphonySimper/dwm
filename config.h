@@ -36,7 +36,7 @@ static const char *const autostart[] = {
 	"slstatus", NULL,
 	/*"firefox", NULL,*/
 	"discord", NULL,
-	"spotify", NULL,
+	/*"spotify", NULL,*/
 	NULL /* terminate */
 };
 
@@ -107,11 +107,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
-
+static const char *sptcmd[] = {"alacritty", "-e", "spt", NULL};
 //SHCMD
 static const char cmdprintscreen[] = "maim -m 1 -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 static const char cmdprintwindow[] = "maim -i -u $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 static const char cmdprintregion[] = "maim -s -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
+//static const char cmdspt[] = "alacritty -e spt";
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -194,6 +195,9 @@ static Key keys[] = {
 	{0, XK_Print, spawn, SHCMD(cmdprintscreen)},
 	{MODKEY | ShiftMask, XK_a, spawn, SHCMD(cmdprintwindow)},
 	{MODKEY | ShiftMask, XK_s, spawn, SHCMD(cmdprintregion)},
+
+	/* Spawn spotify tui */
+	{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
 	/* Tag Keys */
 	TAGKEYS(XK_1, 0)
 		TAGKEYS(XK_2, 1)
