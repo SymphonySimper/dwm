@@ -110,7 +110,7 @@ static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *sptcmd[] = {"alacritty", "-e", "spt", NULL};
 //SHCMD
 static const char cmdprintscreen[] = "maim -m 1 -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
-static const char cmdprintwindow[] = "maim -i -u $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
+static const char cmdprintwindow[] = "maim -u -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 static const char cmdprintregion[] = "maim -s -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 //static const char cmdspt[] = "alacritty -e spt";
 
