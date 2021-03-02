@@ -108,11 +108,12 @@ static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, 
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *sptcmd[] = {"alacritty", "-e", "spt", NULL};
+static const char *gamemodecmd[] = {"/home/s2b/scripts/gameMode.sh", NULL};
+
 //SHCMD
 static const char cmdprintscreen[] = "maim -m 1 -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 static const char cmdprintwindow[] = "maim -u -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 static const char cmdprintregion[] = "maim -s -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
-//static const char cmdspt[] = "alacritty -e spt";
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -198,6 +199,9 @@ static Key keys[] = {
 
 	/* Spawn spotify tui */
 	{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
+
+	/* Run scripts */
+	{MODKEY | ShiftMask, XK_g, spawn, {.v = gamemodecmd}},
 	/* Tag Keys */
 	TAGKEYS(XK_1, 0)
 		TAGKEYS(XK_2, 1)
