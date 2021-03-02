@@ -1,4 +1,3 @@
-
 // IMPORTS
 #include <X11/XF86keysym.h>
 
@@ -107,7 +106,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
-static const char *sptcmd[] = {"alacritty", "-e", "spt", NULL};
+static const char *sptcmd[] = {"alacritty", "-e", "/home/s2b/scripts/spotifydrun.sh", NULL};
 static const char *gamemodecmd[] = {"/home/s2b/scripts/gameMode.sh", NULL};
 
 //SHCMD
@@ -201,8 +200,7 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
 
 	/* Run scripts */
-	{MODKEY | ShiftMask, XK_g, spawn, {.v = gamemodecmd}},
-	/* Tag Keys */
+	{MODKEY | ShiftMask, XK_p, spawn, {.v = gamemodecmd}},
 	TAGKEYS(XK_1, 0)
 		TAGKEYS(XK_2, 1)
 			TAGKEYS(XK_3, 2)
