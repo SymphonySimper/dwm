@@ -1,6 +1,6 @@
 // IMPORTS
 #include <X11/XF86keysym.h>
-
+#include "gaplessgrid.c"
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;	/* snap pixel */
@@ -83,7 +83,8 @@ static const char *brdowncmd[] = {"xbacklight", "-dec", "2", NULL};
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{"    ", tile}, /* first entry is default */
+	{"    ", gaplessgrid}, /* first entry is default */
+	{"    ", tile},
 	{"   ", monocle},
 	{"   ", NULL}, /* no layout function means floating behavior */
 };
@@ -153,14 +154,17 @@ static Key keys[] = {
 	/* Kills window on focus */
 	{MODKEY | ShiftMask, XK_c, killclient, {0}},
 
+	/* Layout Grid */
+	{MODKEY, XK_g, setlayout, {.v = &layouts[0]}},
+
 	/* Layout Stack */
-	{MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
+	{MODKEY, XK_t, setlayout, {.v = &layouts[1]}},
 
 	/* Layout Monocule */
-	{MODKEY, XK_m, setlayout, {.v = &layouts[1]}},
+	{MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
 
 	/* Layout Floating */
-	{MODKEY, XK_f, setlayout, {.v = &layouts[2]}},
+	{MODKEY, XK_f, setlayout, {.v = &layouts[3]}},
 
 	/* Cycles between Stack and Monocule layout */
 	{MODKEY, XK_space, setlayout, {0}},
@@ -212,6 +216,25 @@ static Key keys[] = {
 								TAGKEYS(XK_8, 7)
 									TAGKEYS(XK_9, 8)
 
+	/* Move and resize with keyboard */
+	{MODKEY, XK_Down, moveresize, {.v = "0x 25y 0w 0h"}},
+	{MODKEY, XK_Up, moveresize, {.v = "0x -25y 0w 0h"}},
+	{MODKEY, XK_Right, moveresize, {.v = "25x 0y 0w 0h"}},
+	{MODKEY, XK_Left, moveresize, {.v = "-25x 0y 0w 0h"}},
+	{MODKEY | ShiftMask, XK_Down, moveresize, {.v = "0x 0y 0w 25h"}},
+	{MODKEY | ShiftMask, XK_Up, moveresize, {.v = "0x 0y 0w -25h"}},
+	{MODKEY | ShiftMask, XK_Right, moveresize, {.v = "0x 0y 25w 0h"}},
+	{MODKEY | ShiftMask, XK_Left, moveresize, {.v = "0x 0y -25w 0h"}},
+	{MODKEY | ControlMask, XK_Up, moveresizeedge, {.v = "t"}},
+	{MODKEY | ControlMask, XK_Down, moveresizeedge, {.v = "b"}},
+	{MODKEY | ControlMask, XK_Left, moveresizeedge, {.v = "l"}},
+	{MODKEY | ControlMask, XK_Right, moveresizeedge, {.v = "r"}},
+	{MODKEY | ControlMask | ShiftMask, XK_Up, moveresizeedge, {.v = "T"}},
+	{MODKEY | ControlMask | ShiftMask, XK_Down, moveresizeedge, {.v = "B"}},
+	{MODKEY | ControlMask | ShiftMask, XK_Left, moveresizeedge, {.v = "L"}},
+	{MODKEY | ControlMask | ShiftMask, XK_Right, moveresizeedge, {.v = "R"}},
+
+	{MODKEY | ControlMask, XK_m, togglefloating, {0}},
 	/* Restart and Quit dwm */
 	{MODKEY | ShiftMask, XK_q, quit, {0}},
 	{MODKEY | ShiftMask, XK_r, quit, {1}},
