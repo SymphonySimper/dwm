@@ -53,6 +53,7 @@ static const Rule rules[] = {
 
 	{"firefox", NULL, NULL, 1 << 1, 0, -1},
 	{"Code", NULL, NULL, 1 << 2, 0, -1},
+	{"ffplay", NULL, NULL, 1 << 3, 0, -1},
 	{"mpv", NULL, NULL, 1 << 3, 0, -1},
 	{"discord", NULL, NULL, 1 << 4, 0, -1},
 	{"Spotify", NULL, NULL, 1 << 5, 0, -1},
