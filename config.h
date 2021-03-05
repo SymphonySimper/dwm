@@ -27,7 +27,21 @@ static const char *colors[][3] = {
 	[SchemeNorm] = {col_gray4, col_gray1, col_gray2},
 	[SchemeSel] = {col_gray5, col_gray1, col_gray6},
 };
+typedef struct
+{
+	const char *name;
+	const void *cmd;
 
+} Sp;
+const char *spcmd1[] = {"alacritty", "-t", "spt0", "-o", "dimensions.columns=144,dimensions.lines=41", NULL};
+const char *spcmd2[] = {"alacritty", "-t", "spt1", "-o", "dimensions.columns=144,dimensions.lines=41", NULL};
+const char *spcmd3[] = {"alacritty", "-t", "spm", "-o", "dimensions.columns=144,dimensions.lines=41", "-e", "ncspot", NULL};
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spt0", spcmd1},
+	{"spt1", spcmd2},
+	{"spm", spcmd3},
+};
 /* Auto Startups */
 static const char *const autostart[] = {
 	"picom", "-m", "1.0", "-i", "1.0", "-e", "1.0", "--vsync", "--backend", "glx", "--no-fading-openclose", NULL,
@@ -65,6 +79,10 @@ static const Rule rules[] = {
 	{"obs", NULL, NULL, 1 << 8, 0, -1},
 	{"Steam", NULL, NULL, 1 << 7, 0, -1},
 	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
+	/* Scratch Pads */
+	{NULL, NULL, "spt0", SPTAG(0), 1, -1},
+	{NULL, NULL, "spt1", SPTAG(1), 1, -1},
+	{NULL, NULL, "spm", SPTAG(2), 1, -1},
 };
 
 /* layout(s) */
@@ -202,7 +220,7 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_s, spawn, SHCMD(cmdprintregion)},
 
 	/* Spawn spotify tui */
-	{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
+	//{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
 
 	/* Run scripts */
 	{MODKEY | ShiftMask, XK_p, spawn, {.v = gamemodecmd}},
@@ -235,6 +253,11 @@ static Key keys[] = {
 	{MODKEY | ControlMask | ShiftMask, XK_Right, moveresizeedge, {.v = "R"}},
 
 	{MODKEY | ControlMask, XK_m, togglefloating, {0}},
+
+	/* scratchpads */
+	{MODKEY, XK_y, togglescratch, {.ui = 0}},
+	{MODKEY, XK_u, togglescratch, {.ui = 1}},
+	{MODKEY, XK_x, togglescratch, {.ui = 2}},
 	/* Restart and Quit dwm */
 	{MODKEY | ShiftMask, XK_q, quit, {0}},
 	{MODKEY | ShiftMask, XK_r, quit, {1}},
