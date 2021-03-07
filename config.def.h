@@ -228,7 +228,7 @@ static Key keys[] = {
 
 	// Run scripts
 	{MODKEY | ShiftMask, XK_p, spawn, {.v = gamemodecmd}},
-	{Mod1Mask, XK_s, spawn, {.v = searchcmd}},
+	{MODKEY, XK_s, spawn, {.v = searchcmd}},
 
 	TAGKEYS(XK_1, 0)
 	TAGKEYS(XK_2, 1)
