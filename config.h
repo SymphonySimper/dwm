@@ -129,8 +129,8 @@ static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
-// static const char *sptcmd[] = {"alacritty", "-e", "bash", "/home/s2b/scripts/spotifydrun.sh", NULL};
-static const char *gamemodecmd[] = {"/home/s2b/scripts/gameMode.sh", NULL};
+// static const char *sptcmd[] = {"alacritty", "-e", "sh", "/home/s2b/scripts/spotifydrun", NULL};
+static const char *gamemodecmd[] = {"/home/s2b/scripts/gameMode", NULL};
 static const char *searchcmd[] = {"/home/s2b/scripts/search", NULL};
 
 // SHCMD
