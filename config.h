@@ -50,9 +50,9 @@ static const char *const autostart[] = {
 	//"wmname", "LG3D", NULL,
 	"slstatus", NULL,
 	//"firefox", NULL,
-	//"discord", NULL,
-	"lightcord", NULL,
-	"whatsapp-nativefier", NULL,
+	"discord", NULL,
+	//"lightcord", NULL,
+	//"whatsapp-nativefier", NULL,
 	//"spotify", NULL,
 	NULL // terminate
 };
