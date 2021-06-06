@@ -49,11 +49,8 @@ static const char *const autostart[] = {
 	"picom", "-m", "1.0", "-i", "1.0", "-e", "1.0", "--vsync", "--backend", "glx", "--no-fading-openclose", NULL,
 	//"wmname", "LG3D", NULL,
 	"slstatus", NULL,
-	//"firefox", NULL,
 	"discord", NULL,
-	//"lightcord", NULL,
-	//"whatsapp-nativefier", NULL,
-	//"spotify", NULL,
+	"ferdi", NULL,
 	NULL // terminate
 };
 
@@ -75,10 +72,7 @@ static const Rule rules[] = {
 	{"Code", NULL, NULL, 1 << 2, 0, -1},
 	{"mpv", NULL, NULL, 1 << 3, 0, -1},
 	{"discord", NULL, NULL, 1 << 4, 0, -1},
-	{"lightcord", NULL, NULL, 1 << 4, 0, -1},
 	{"figma-linux",NULL, NULL, 1 << 5, 0, -1},
-	{"Spotify", NULL, NULL, 1 << 5, 0, -1},
-	{"whatsapp-nativefier", NULL, NULL, 1 << 5, 0,-1},
 	{"Pcmanfm", NULL, NULL, 1 << 6, 0, -1},
 	{"Gimp", NULL, NULL, 1 << 7, 0, -1},
 	{"Blender", NULL, NULL, 1 << 7, 0, -1},
@@ -87,6 +81,8 @@ static const Rule rules[] = {
 	{"obs", NULL, NULL, 1 << 8, 0, -1},
 	{"Steam", NULL, NULL, 1 << 7, 0, -1},
 	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
+	//Floating
+	{NULL, NULL, "Android Emulator - Pixel_4_XL_API_28:5554", 0, 1, -1},
 	// Scratch Pads
 	{NULL, NULL, "spt0", SPTAG(0), 1, -1},
 	{NULL, NULL, "spt1", SPTAG(1), 1, -1},
