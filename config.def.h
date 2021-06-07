@@ -37,8 +37,8 @@ typedef struct
 const char *spcmd1[] = {"alacritty", "-t", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
 const char *spcmd2[] = {"alacritty", "-t", "spt1", "-e", "nvim", "-c", ":Goyo", "todo", NULL};
 //const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "ncspot", NULL};
-//const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "bash", "/home/s2b/scripts/spotifydrun", NULL};
-const char *spcmd3[] = {"alacritty", "-t", "spm", NULL};
+const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "bash", "/home/s2b/scripts/spotifydrun", NULL};
+//const char *spcmd3[] = {"alacritty", "-t", "spm", NULL};
 
 static Sp scratchpads[] = {
 	// name          cmd
@@ -87,6 +87,7 @@ static const Rule rules[] = {
 	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
 	//Floating
 	{NULL, NULL, "Android Emulator - Pixel_4_XL_API_28:5554", 0, 1, -1},
+	
 	// Scratch Pads
 	{NULL, NULL, "spt0", SPTAG(0), 1, -1},
 	{NULL, NULL, "spt1", SPTAG(1), 1, -1},
