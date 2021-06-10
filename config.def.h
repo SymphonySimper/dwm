@@ -86,8 +86,6 @@ static const Rule rules[] = {
 	{"obs", NULL, NULL, 1 << 8, 0, -1},
 	{"Steam", NULL, NULL, 1 << 7, 0, -1},
 	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
-	//Floating
-	{NULL, NULL, "Android Emulator - Pixel_4_XL_API_28:5554", 1 << 1, 1, -1},
 	
 	// Scratch Pads
 	{NULL, NULL, "spt0", SPTAG(0), 1, -1},
