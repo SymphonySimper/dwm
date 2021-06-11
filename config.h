@@ -54,7 +54,7 @@ static const char *const autostart[] = {
 	//"wmname", "LG3D", NULL,
 	"slstatus", NULL,
 	"discord", NULL,
-	"ferdi", NULL,
+	//"ferdi", NULL,
 	//"bash", "/home/s2b/scripts/spotifydrun", NULL,
 	NULL // terminate
 };
