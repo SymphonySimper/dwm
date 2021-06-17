@@ -38,7 +38,7 @@ const char *spcmd1[] = {"alacritty", "-t", "spt0", "-e", "pulsemixer", "--color"
 //const char *spcmd2[] = {"alacritty", "-t", "spt1", "-e", "nvim", "-c", ":Goyo", "todo", NULL};
 const char *spcmd2[] = {"alacritty", "-t", "spt1", NULL};
 //const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "ncspot", NULL};
-const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "bash", "/home/s2b/scripts/spotifydrun", NULL};
+const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "bash", "spotifydrun", NULL};
 //const char *spcmd3[] = {"alacritty", "-t", "spm", NULL};
 
 static Sp scratchpads[] = {
@@ -55,7 +55,7 @@ static const char *const autostart[] = {
 	"slstatus", NULL,
 	"discord", NULL,
 	//"ferdi", NULL,
-	//"bash", "/home/s2b/scripts/spotifydrun", NULL,
+	//"bash", "spotifydrun", NULL,
 	NULL // terminate
 };
 
@@ -99,13 +99,16 @@ static const int nmaster = 1;	  // number of clients in master area
 static const int resizehints = 1; // 1 means respect size hints in tiled resizals
 
 // Volume Control
-static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+2%", NULL};
-static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-2%", NULL};
-static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
+//static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+2%", NULL};
+//static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-2%", NULL};
+//static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
+static const char *upvol[] = {"volume", "-u", NULL };
+static const char *downvol[] = {"volume", "-d", NULL};
+static const char *mutevol[] = {"volume", "-m", NULL};
 
 // Brightness Control
-static const char *brupcmd[] = {"xbacklight", "-inc", "2", NULL};
-static const char *brdowncmd[] = {"xbacklight", "-dec", "2", NULL};
+static const char *brupcmd[] = {"brightness", "-u", NULL};
+static const char *brdowncmd[] = {"brightness", "-d", NULL};
 
 static const Layout layouts[] = {
 	// symbol     arrange function
@@ -134,9 +137,9 @@ static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
-// static const char *sptcmd[] = {"alacritty", "-e", "sh", "/home/s2b/scripts/spotifydrun", NULL};
-static const char *gamemodecmd[] = {"/home/s2b/scripts/gameMode", NULL};
-static const char *searchcmd[] = {"/home/s2b/scripts/search", NULL};
+// static const char *sptcmd[] = {"alacritty", "-e", "sh", "spotifydrun", NULL};
+static const char *gamemodecmd[] = {"gameMode", NULL};
+static const char *searchcmd[] = {"search", NULL};
 
 // SHCMD
 static const char cmdprintscreen[] = "maim -m 1 -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
