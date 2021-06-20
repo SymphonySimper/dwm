@@ -102,9 +102,13 @@ static const int resizehints = 1; // 1 means respect size hints in tiled resizal
 //static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+2%", NULL};
 //static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-2%", NULL};
 //static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
-static const char *upvol[] = {"volume", "-u", NULL };
+static const char *upvol[] = {"volume", "-u", NULL};
 static const char *downvol[] = {"volume", "-d", NULL};
 static const char *mutevol[] = {"volume", "-m", NULL};
+
+//Spotifyd volume
+static const char *spotifydvolup[] = {"spotifydVol", "-u", NULL};
+static const char *spotifydvoldwn[] = {"spotifydVol", "-d", NULL};
 
 // Brightness Control
 static const char *brupcmd[] = {"brightness", "-u", NULL};
@@ -221,6 +225,10 @@ static Key keys[] = {
 	{MODKEY, XK_F2, spawn, {.v = downvol}},
 	{MODKEY, XK_F3, spawn, {.v = upvol}},
 	{MODKEY, XK_F4, spawn, {.v = mutevol}},
+	
+	//Spotifyd Volume
+	{MODKEY | ShiftMask, XK_F2, spawn, {.v = spotifydvoldwn}},
+	{MODKEY | ShiftMask, XK_F3, spawn, {.v = spotifydvolup}},
 
 	// Brightness
 	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
