@@ -35,11 +35,8 @@ typedef struct
 
 } Sp;
 const char *spcmd1[] = {"alacritty", "-t", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
-//const char *spcmd2[] = {"alacritty", "-t", "spt1", "-e", "nvim", "-c", ":Goyo", "todo", NULL};
 const char *spcmd2[] = {"alacritty", "-t", "spt1", NULL};
-//const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "ncspot", NULL};
 const char *spcmd3[] = {"alacritty", "-t", "spm","-e", "bash", "spotifydrun", NULL};
-//const char *spcmd3[] = {"alacritty", "-t", "spm", NULL};
 
 static Sp scratchpads[] = {
 	// name          cmd
@@ -51,11 +48,8 @@ static Sp scratchpads[] = {
 // Auto Startups
 static const char *const autostart[] = {
 	"picom", "-m", "1.0", "-i", "1.0", "-e", "1.0", "--vsync", "--backend", "glx", "--no-fading-openclose", NULL,
-	//"wmname", "LG3D", NULL,
 	"slstatus", NULL,
 	"discord", NULL,
-	//"ferdi", NULL,
-	//"bash", "spotifydrun", NULL,
 	NULL // terminate
 };
 
@@ -99,9 +93,6 @@ static const int nmaster = 1;	  // number of clients in master area
 static const int resizehints = 1; // 1 means respect size hints in tiled resizals
 
 // Volume Control
-//static const char *upvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "+2%", NULL};
-//static const char *downvol[] = {"/usr/bin/pactl", "set-sink-volume", "0", "-2%", NULL};
-//static const char *mutevol[] = {"/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL};
 static const char *upvol[] = {"volume", "-u", NULL};
 static const char *downvol[] = {"volume", "-d", NULL};
 static const char *mutevol[] = {"volume", "-m", NULL};
@@ -109,10 +100,16 @@ static const char *mutevol[] = {"volume", "-m", NULL};
 //Spotifyd volume
 static const char *spotifydvolup[] = {"spotifydVol", "-u", NULL};
 static const char *spotifydvoldwn[] = {"spotifydVol", "-d", NULL};
+static const char *spotifydmute[] = {"spotifydVol", "-m", NULL};
 
 // Brightness Control
 static const char *brupcmd[] = {"brightness", "-u", NULL};
 static const char *brdowncmd[] = {"brightness", "-d", NULL};
+
+//Take Screenshot
+static const char *printscreen[] = {"screenshot", "-s", NULL};
+static const char *printwindow[] = {"screenshot", "-w", NULL};
+static const char *printregion[] = {"screenshot", "-r", NULL};
 
 static const Layout layouts[] = {
 	// symbol     arrange function
@@ -141,14 +138,8 @@ static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
-// static const char *sptcmd[] = {"alacritty", "-e", "sh", "spotifydrun", NULL};
 static const char *gamemodecmd[] = {"gameMode", NULL};
 static const char *searchcmd[] = {"search", NULL};
-
-// SHCMD
-static const char cmdprintscreen[] = "maim -m 1 -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
-static const char cmdprintwindow[] = "maim -u -i $(xdotool getactivewindow) | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
-static const char cmdprintregion[] = "maim -s -u | tee ~/Pictures/screenshots/$(date +%s).png | xclip -selection clipboard -t image/png";
 
 static Key keys[] = {
 	// modifier                     key        function        argument
@@ -229,15 +220,16 @@ static Key keys[] = {
 	//Spotifyd Volume
 	{MODKEY | ShiftMask, XK_F2, spawn, {.v = spotifydvoldwn}},
 	{MODKEY | ShiftMask, XK_F3, spawn, {.v = spotifydvolup}},
+	{MODKEY | ShiftMask, XK_F4, spawn, {.v = spotifydmute}},
 
 	// Brightness
 	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
 	{MODKEY, XK_F6, spawn, {.v = brdowncmd}},
 
 	// Take Screenshot using maim
-	{0, XK_Print, spawn, SHCMD(cmdprintscreen)},
-	{MODKEY | ShiftMask, XK_a, spawn, SHCMD(cmdprintwindow)},
-	{MODKEY | ShiftMask, XK_s, spawn, SHCMD(cmdprintregion)},
+	{0, XK_Print, spawn, {.v = printscreen}},
+	{MODKEY | ShiftMask, XK_a, spawn, {.v = printwindow}},
+	{MODKEY | ShiftMask, XK_s, spawn, {.v = printregion}},
 
 	// Spawn spotify tui
 	//{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
