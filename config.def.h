@@ -111,6 +111,9 @@ static const char *printscreen[] = {"screenshot", "-s", NULL};
 static const char *printwindow[] = {"screenshot", "-w", NULL};
 static const char *printregion[] = {"screenshot", "-r", NULL};
 
+//Date/Time/Battery show
+static const char *dateandbattery[] = {"dateAndBattery", NULL};
+
 static const Layout layouts[] = {
 	// symbol     arrange function
 	{"    ", gaplessgrid}, // first entry is default
@@ -154,7 +157,7 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_f, spawn, {.v = firefoxcmd}},
 
 	// Show/Hide Bar
-	{MODKEY, XK_b, togglebar, {0}},
+	{MODKEY | ShiftMask, XK_b, togglebar, {0}},
 
 	// Change Focus
 	{MODKEY, XK_j, focusstack, {.i = +1}},
@@ -231,12 +234,10 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_a, spawn, {.v = printwindow}},
 	{MODKEY | ShiftMask, XK_s, spawn, {.v = printregion}},
 
-	// Spawn spotify tui
-	//{MODKEY | ShiftMask, XK_m, spawn, {.v = sptcmd}},
-
 	// Run scripts
 	{MODKEY | ShiftMask, XK_p, spawn, {.v = gamemodecmd}},
 	{MODKEY, XK_s, spawn, {.v = searchcmd}},
+	{MODKEY, XK_b, spawn, {.v = dateandbattery}},
 
 	TAGKEYS(XK_1, 0)
 	TAGKEYS(XK_2, 1)
