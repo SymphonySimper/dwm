@@ -71,7 +71,6 @@ static const Rule rules[] = {
 	{"Code", NULL, NULL, 1 << 2, 0, -1},
 	{"mpv", NULL, NULL, 1 << 3, 0, -1},
 	{"discord", NULL, NULL, 1 << 4, 0, -1},
-	{"figma-linux",NULL, NULL, 1 << 5, 0, -1},
 	{"Pcmanfm", NULL, NULL, 1 << 6, 0, -1},
 	{"Gimp", NULL, NULL, 1 << 7, 0, -1},
 	{"Blender", NULL, NULL, 1 << 7, 0, -1},
@@ -81,6 +80,10 @@ static const Rule rules[] = {
 	{"Steam", NULL, NULL, 1 << 7, 0, -1},
 	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
 	
+	//Chromium apps
+	{NULL, "www.figma.com__files", NULL, 1 << 5, 0, -1},
+	{NULL, "web.whatsapp.com", NULL, 1 << 6, 0, -1},
+
 	// Scratch Pads
 	{NULL, NULL, "spt0", SPTAG(0), 1, -1},
 	{NULL, NULL, "spt1", SPTAG(1), 1, -1},
