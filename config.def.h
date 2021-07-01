@@ -48,7 +48,7 @@ static Sp scratchpads[] = {
 // Auto Startups
 static const char *const autostart[] = {
 	"picom", "-m", "1.0", "-i", "1.0", "-e", "1.0", "--vsync", "--backend", "glx", "--no-fading-openclose", NULL,
-	"slstatus", NULL,
+	//"slstatus", NULL,
 	"discord", NULL,
 	NULL // terminate
 };
