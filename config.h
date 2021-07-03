@@ -147,16 +147,18 @@ static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *gamemodecmd[] = {"gameMode", NULL};
 static const char *searchcmd[] = {"search", NULL};
 static const char *roficmd[] = {"rofi", "-show", "run", NULL};
+static const char *rofieditcmd[] = {"rofiEdit", NULL};
 
 static Key keys[] = {
 	// modifier                     key        function        argument
 
-	// Opens Dmenu
-	{MODKEY, XK_p, spawn, {.v = roficmd}},
-
 	// Opens Rofi
-	{MODKEY | ShiftMask, XK_t, spawn, {.v = dmenucmd}},
+	{MODKEY, XK_p, spawn, {.v = roficmd}},
+	{MODKEY, XK_e, spawn, {.v = rofieditcmd}},
 
+	// Opens Dmenu
+	{MODKEY | ShiftMask, XK_t, spawn, {.v = dmenucmd}},
+	
 	// Opens Terminal
 	{MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
 
