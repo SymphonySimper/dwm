@@ -5,6 +5,7 @@
 // appearance
 static const unsigned int borderpx = 1; // border pixel of windows
 static const unsigned int snap = 32;	// snap pixel
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
 // Bar
 static const int showbar = 0;	  // 0 means no bar
@@ -64,30 +65,34 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	// class      instance    title       tags mask     isfloating   monitor
+	/* class     instance  title          tags mask  isfloating  isterminal  noswallow  monitor */
 
-	{"ffplay", NULL, NULL, 0, 1, -1},
-	{"firefox", NULL, NULL, 1 << 1, 0, -1},
-	{"qutebrowser", NULL, NULL, 1 << 1, 0, -1},
-	{"Code", NULL, NULL, 1 << 2, 0, -1},
-	{"mpv", NULL, NULL, 1 << 3, 0, -1},
-	{"discord", NULL, NULL, 1 << 4, 0, -1},
-	{"Pcmanfm", NULL, NULL, 1 << 6, 0, -1},
-	{"Gimp", NULL, NULL, 1 << 7, 0, -1},
-	{"Blender", NULL, NULL, 1 << 7, 0, -1},
-	{"kdenlive", NULL, NULL, 1 << 7, 0, -1},
-	{"Inkscape", NULL, NULL, 1 << 7, 0, -1},
-	{"obs", NULL, NULL, 1 << 8, 0, -1},
-	{"Steam", NULL, NULL, 1 << 7, 0, -1},
-	{"jetbrains-studio", NULL, NULL, 0, 1, -1},
+	{"ffplay", NULL, NULL, 0, 1, 0, 0, -1},
+	{"firefox", NULL, NULL, 1 << 1, 0, 0, 0, -1},
+	{"qutebrowser", NULL, NULL, 1 << 1, 0, 0, 0, -1},
+	{"Code", NULL, NULL, 1 << 2, 0, 0, 0, -1},
+	{"mpv", NULL, NULL, 1 << 3, 0, 0, 0, -1},
+	{"discord", NULL, NULL, 1 << 4, 0, 0, 0, -1},
+	{"Pcmanfm", NULL, NULL, 1 << 6, 0, 0, 0, -1},
+	{"Gimp", NULL, NULL, 1 << 7, 0, 0, 0, -1},
+	{"Blender", NULL, NULL, 1 << 7, 0, 0, 0, -1},
+	{"kdenlive", NULL, NULL, 1 << 7, 0, 0, 0, -1},
+	{"Inkscape", NULL, NULL, 1 << 7, 0, 0, 0, -1},
+	{"obs", NULL, NULL, 1 << 8, 0, 0, 0, -1},
+	{"Steam", NULL, NULL, 1 << 7, 0, 0, 0, -1},
+	{"jetbrains-studio", NULL, NULL, 0, 1, 0, 0, -1},
 	
 	//Chromium apps
-	{NULL, "www.figma.com__files", NULL, 1 << 5, 0, -1},
-	{NULL, "web.whatsapp.com", NULL, 1 << 6, 0, -1},
+	{NULL, "www.figma.com__files", NULL, 1 << 5, 0, 0, 0, -1},
+	{NULL, "web.whatsapp.com", NULL, 1 << 6, 0, 0, 0, -1},
 
 	// Scratch Pads
-	{NULL, NULL, "spt0", SPTAG(0), 1, -1},
-	{NULL, NULL, "spt1", SPTAG(1), 1, -1},
-	{NULL, NULL, "spm", SPTAG(2), 1, -1},
+	{NULL, NULL, "spt0", SPTAG(0), 1, 0, 0, -1},
+	{NULL, NULL, "spt1", SPTAG(1), 1, 0, 0, -1},
+	{NULL, NULL, "spm", SPTAG(2), 1, 0, 0, -1},
+
+	{"Alacritty", NULL, NULL, 0, 0, 1, 0, -1 },
+	{NULL, NULL, "Event Tester", 0, 0, 0, 1, -1 }, /* xev */
 };
 
 // layout(s) 
