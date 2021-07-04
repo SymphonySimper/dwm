@@ -145,9 +145,9 @@ static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, 
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *gamemodecmd[] = {"gameMode", NULL};
-static const char *searchcmd[] = {"search", NULL};
 static const char *roficmd[] = {"rofi", "-show", "run", NULL};
 static const char *rofieditcmd[] = {"rofiEdit", NULL};
+static const char *searchcmd[] = {"rofiOpen", NULL};
 
 static Key keys[] = {
 	// modifier                     key        function        argument
