@@ -2,6 +2,10 @@
 #include <X11/XF86keysym.h>
 #include "gaplessgrid.c"
 
+//Terminal
+#define TERMINAL "alacritty"
+#define TERMCLASS "Alacritty"
+
 // appearance
 static const unsigned int borderpx = 1; // border pixel of windows
 static const unsigned int snap = 32;	// snap pixel
@@ -35,9 +39,9 @@ typedef struct
 	const void *cmd;
 
 } Sp;
-const char *spcmd1[] = {"alacritty", "-t", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
-const char *spcmd2[] = {"alacritty", "-t", "spt1", NULL};
-const char *spcmd3[] = {"alacritty", "-t", "spm", "-e", "bash", "spotifydrun", NULL};
+const char *spcmd1[] = {TERMINAL, "--class", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
+const char *spcmd2[] = {TERMINAL, "--class", "spt1", NULL};
+const char *spcmd3[] = {TERMINAL, "--class", "spm", "-e", "bash", "spotifydrun", NULL};
 
 static Sp scratchpads[] = {
 	// name          cmd
@@ -85,15 +89,17 @@ static const Rule rules[] = {
 	//Chromium apps
 	{NULL, "www.figma.com__files", NULL, 1 << 5, 0, 0, 0, -1},
 	{NULL, "web.whatsapp.com", NULL, 1 << 6, 0, 0, 0, -1},
+	
+	//Swallow
+	{TERMCLASS, NULL, NULL, 0, 0, 1, 0, -1 },
+	{NULL, NULL, "Event Tester", 0, 0, 0, 1, -1 }, /* xev */
 
 	// Scratch Pads
-	{NULL, NULL, "spt0", SPTAG(0), 1, 0, 0, -1},
-	{NULL, NULL, "spt1", SPTAG(1), 1, 0, 0, -1},
-	{NULL, NULL, "spm", SPTAG(2), 1, 0, 0, -1},
+	{NULL, "spt0", NULL, SPTAG(0), 1, 0, 0, -1},
+	{NULL, "spt1", NULL, SPTAG(1), 1, 0, 0, -1},
+	{NULL, "spm", NULL, SPTAG(2), 1, 0, 0, -1},
 
-	{"Alacritty", NULL, NULL, 0, 0, 1, 0, -1 },
-	{NULL, NULL, "Event Tester", 0, 0, 0, 1, -1 }, /* xev */
-};
+	};
 
 // layout(s) 
 static const float mfact = 0.55;  // factor of master area size [0.05..0.95]
@@ -147,7 +153,7 @@ static const Layout layouts[] = {
 // commands
 static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {TERMINAL, NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *gamemodecmd[] = {"gameMode", NULL};
 static const char *roficmd[] = {"rofi", "-show", "run", NULL};
