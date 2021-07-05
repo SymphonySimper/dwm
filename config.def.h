@@ -130,9 +130,11 @@ static const char *dateandbattery[] = {"dateAndBattery", NULL};
 
 static const Layout layouts[] = {
 	// symbol     arrange function
-	{"    ", gaplessgrid}, // first entry is default
 	{"    ", tile},
+	{"    ", gaplessgrid}, // first entry is default
 	{"   ", monocle},
+	{ "|M|", centeredmaster }, 
+	{ ">M>", centeredfloatingmaster },
 	{"   ", NULL}, // no layout function means floating behavior
 };
 
@@ -202,17 +204,20 @@ static Key keys[] = {
 	// Kills window on focus
 	{MODKEY | ShiftMask, XK_c, killclient, {0}},
 
-	// Layout Grid
-	{MODKEY, XK_g, setlayout, {.v = &layouts[0]}},
-
 	// Layout Stack 
-	{MODKEY, XK_t, setlayout, {.v = &layouts[1]}},
+	{MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
+	
+	// Layout Grid
+	{MODKEY, XK_g, setlayout, {.v = &layouts[1]}},
 
 	// Layout Monocule
 	{MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
 
+	{MODKEY, XK_o, setlayout, {.v = &layouts[3]}},
+	{MODKEY | ShiftMask, XK_o, setlayout, {.v = &layouts[4]}},
+	
 	// Layout Floating
-	{MODKEY, XK_f, setlayout, {.v = &layouts[3]}},
+	{MODKEY, XK_f, setlayout, {.v = &layouts[5]}},
 
 	// Cycles between Stack and Monocule layout
 	{MODKEY, XK_space, setlayout, {0}},
