@@ -222,8 +222,11 @@ static Key keys[] = {
 	// Cycles between Stack and Monocule layout
 	{MODKEY, XK_space, setlayout, {0}},
 
-	// No Idea what it does 
+	// Makes window float 
 	{MODKEY | ShiftMask, XK_space, togglefloating, {0}},
+	
+	// Makes window sticky
+	{MODKEY | ControlMask, XK_s, togglesticky, {0}},
 
 	// Switch Tab
 	{MODKEY, XK_0, view, {.ui = ~0}},
