@@ -126,7 +126,7 @@ static const char *printwindow[] = {"screenshot", "-w", NULL};
 static const char *printregion[] = {"screenshot", "-r", NULL};
 
 //Date/Time/Battery show
-static const char *dateandbattery[] = {"dateAndBattery", NULL};
+static const char *myinfo[] = {"myInfo", NULL};
 
 static const Layout layouts[] = {
 	// symbol     arrange function
@@ -265,7 +265,7 @@ static Key keys[] = {
 	// Run scripts
 	{MODKEY | ShiftMask, XK_p, spawn, {.v = gamemodecmd}},
 	{MODKEY, XK_s, spawn, {.v = searchcmd}},
-	{MODKEY, XK_b, spawn, {.v = dateandbattery}},
+	{MODKEY, XK_b, spawn, {.v = myinfo}},
 
 	TAGKEYS(XK_1, 0)
 	TAGKEYS(XK_2, 1)
