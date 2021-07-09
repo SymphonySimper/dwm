@@ -41,7 +41,7 @@ typedef struct
 } Sp;
 const char *spcmd1[] = {TERMINAL, "--class", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
 const char *spcmd2[] = {TERMINAL, "--class", "spt1", NULL};
-const char *spcmd3[] = {TERMINAL, "--class", "spm", "-e", "bash", "spotifydrun", NULL};
+const char *spcmd3[] = {TERMINAL, "--class", "spm", "-e", "dash", "/home/s2b/.local/bin/spotifydrun", NULL};
 
 static Sp scratchpads[] = {
 	// name          cmd
@@ -53,8 +53,6 @@ static Sp scratchpads[] = {
 // Auto Startups
 static const char *const autostart[] = {
 	"picom", "-m", "1.0", "-i", "1.0", "-e", "1.0", "--vsync", "--backend", "glx", "--no-fading-openclose", NULL,
-	//"slstatus", NULL,
-	"discord", NULL,
 	NULL // terminate
 };
 
