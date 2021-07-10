@@ -1,6 +1,7 @@
 // IMPORTS
 #include <X11/XF86keysym.h>
 #include "gaplessgrid.c"
+#include "/home/s2b/.cache/wal/colors-wal-dwm.h"
 
 //Terminal
 #define TERMINAL "alacritty"
@@ -21,18 +22,6 @@ static const int vertpadbar = 2;  // vertical padding for statusbar
 static const char *fonts[] = {"poppins:size=10:antialias=true:autohint=true"};
 static const char dmenufont[] = "poppins:size=10:antialias=true:autohint=true";
 
-// Color
-static const char col_gray1[] = "#111111";
-static const char col_gray2[] = "#222222";
-static const char col_gray3[] = "#444444";
-static const char col_gray6[] = "#777777";
-static const char col_gray4[] = "#bbbbbb";
-static const char col_gray5[] = "#aaaaaa";
-static const char *colors[][3] = {
-	//               fg         bg         border  
-	[SchemeNorm] = {col_gray4, col_gray1, col_gray2},
-	[SchemeSel] = {col_gray5, col_gray1, col_gray6},
-};
 typedef struct
 {
 	const char *name;
@@ -152,7 +141,7 @@ static const Layout layouts[] = {
 
 // commands
 static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
-static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_gray3, "-sf", col_gray5, NULL};
+static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, NULL};
 static const char *termcmd[] = {TERMINAL, NULL};
 static const char *firefoxcmd[] = {"firefox", NULL};
 static const char *gamemodecmd[] = {"gameMode", NULL};
