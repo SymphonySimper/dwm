@@ -3,9 +3,10 @@
 #include "gaplessgrid.c"
 #include "/home/s2b/.cache/wal/colors-wal-dwm.h"
 
-//Terminal
+// My Definitons
 #define TERMINAL "alacritty"
 #define TERMCLASS "Alacritty"
+#define BROWSER "firefox"
 
 // appearance
 static const unsigned int borderpx = 1; // border pixel of windows
@@ -59,7 +60,7 @@ static const Rule rules[] = {
 	/* class     instance  title          tags mask  isfloating  isterminal  noswallow  monitor */
 
 	{"ffplay", NULL, NULL, 0, 1, 0, 0, -1},
-	{"firefox", NULL, NULL, 1 << 1, 0, 0, 0, -1},
+	{BROWSER, NULL, NULL, 1 << 1, 0, 0, 0, -1},
 	{"qutebrowser", NULL, NULL, 1 << 1, 0, 0, 0, -1},
 	{"Code", NULL, NULL, 1 << 2, 0, 0, 0, -1},
 	{"mpv", NULL, NULL, 1 << 3, 0, 0, 0, -1},
@@ -143,7 +144,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, NULL};
 static const char *termcmd[] = {TERMINAL, NULL};
-static const char *firefoxcmd[] = {"firefox", NULL};
+static const char *browsercmd[] = {BROWSER, NULL};
 static const char *gamemodecmd[] = {"gameMode", NULL};
 static const char *roficmd[] = {"rofi", "-show", "run", NULL};
 static const char *rofieditcmd[] = {"rofiEdit", NULL};
@@ -163,7 +164,7 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
 
 	// Open Firefox 
-	{MODKEY | ShiftMask, XK_f, spawn, {.v = firefoxcmd}},
+	{MODKEY | ShiftMask, XK_f, spawn, {.v = browsercmd}},
 
 	// Show/Hide Bar
 	{MODKEY | ShiftMask, XK_b, togglebar, {0}},
