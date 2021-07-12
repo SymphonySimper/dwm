@@ -31,7 +31,7 @@ typedef struct
 } Sp;
 const char *spcmd1[] = {TERMINAL, "--class", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
 const char *spcmd2[] = {TERMINAL, "--class", "spt1", NULL};
-const char *spcmd3[] = {TERMINAL, "--class", "spm", "-e", "dash", "/home/s2b/.local/bin/spotifydrun", NULL};
+const char *spcmd3[] = {TERMINAL, "--class", "spm", NULL};
 
 static Sp scratchpads[] = {
 	// name          cmd
@@ -64,6 +64,7 @@ static const Rule rules[] = {
 	{"qutebrowser", NULL, NULL, 1 << 1, 0, 0, 0, -1},
 	{"Code", NULL, NULL, 1 << 2, 0, 0, 0, -1},
 	{"mpv", NULL, NULL, 1 << 3, 0, 0, 0, -1},
+	{"Brave-browser", NULL, NULL, 1 << 3, 0, 0, 0, -1},
 	{"discord", NULL, NULL, 1 << 4, 0, 0, 0, -1},
 	{"Pcmanfm", NULL, NULL, 1 << 6, 0, 0, 0, -1},
 	{"Gimp", NULL, NULL, 1 << 7, 0, 0, 0, -1},
