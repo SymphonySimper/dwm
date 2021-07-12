@@ -29,7 +29,7 @@ typedef struct
 	const void *cmd;
 
 } Sp;
-const char *spcmd1[] = {TERMINAL, "--class", "spt0", "-e", "pulsemixer", "--color", "0", NULL};
+const char *spcmd1[] = {TERMINAL, "--class", "spt0", "-e", "pulsemixer", NULL};
 const char *spcmd2[] = {TERMINAL, "--class", "spt1", NULL};
 const char *spcmd3[] = {TERMINAL, "--class", "spm", NULL};
 
@@ -37,7 +37,7 @@ static Sp scratchpads[] = {
 	// name          cmd
 	{"spt0", spcmd1},
 	{"spt1", spcmd2},
-	{"spm", spcmd3},
+//	{"spm", spcmd3},
 };
 
 // Auto Startups
@@ -289,7 +289,7 @@ static Key keys[] = {
 	// scratchpads 
 	{MODKEY, XK_y, togglescratch, {.ui = 0}},
 	{MODKEY, XK_u, togglescratch, {.ui = 1}},
-	{MODKEY, XK_x, togglescratch, {.ui = 2}},
+//	{MODKEY, XK_x, togglescratch, {.ui = 2}},
 
 	// Restart and Quit dwm
 	{MODKEY | ShiftMask, XK_q, quit, {0}},
