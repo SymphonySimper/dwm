@@ -1,7 +1,6 @@
 // IMPORTS
 #include <X11/XF86keysym.h>
 #include "gaplessgrid.c"
-#include "/home/s2b/.cache/wal/colors-wal-dwm.h"
 
 // My Definitons
 #define TERMINAL "alacritty"
@@ -22,6 +21,21 @@ static const int vertpadbar = 2;  // vertical padding for statusbar
 // Font
 static const char *fonts[] = {"poppins:size=10:antialias=true:autohint=true"};
 static const char dmenufont[] = "poppins:size=10:antialias=true:autohint=true";
+
+static const char norm_fg[] = "#bbbbbb";
+static const char norm_bg[] = "#111111";
+static const char norm_border[] = "#222222";
+
+static const char sel_fg[] = "#aaaaaa";
+static const char sel_bg[] = "#111111";
+static const char sel_border[] = "#777777";
+
+static const char *colors[][3]      = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+};
+
 
 typedef struct
 {
