@@ -115,9 +115,9 @@ static const char *downvol[] = {"volume", "-d", NULL};
 static const char *mutevol[] = {"volume", "-m", NULL};
 
 //Spotifyd volume
-static const char *spotifydvolup[] = {"spotifydVol", "-u", NULL};
-static const char *spotifydvoldwn[] = {"spotifydVol", "-d", NULL};
-static const char *spotifydmute[] = {"spotifydVol", "-m", NULL};
+//static const char *spotifydvolup[] = {"spotifydVol", "-u", NULL};
+//static const char *spotifydvoldwn[] = {"spotifydVol", "-d", NULL};
+//static const char *spotifydmute[] = {"spotifydVol", "-m", NULL};
 
 // Brightness Control
 static const char *brupcmd[] = {"brightness", "-u", NULL};
@@ -252,9 +252,9 @@ static Key keys[] = {
 	{MODKEY, XK_F4, spawn, {.v = mutevol}},
 	
 	//Spotifyd Volume
-	{MODKEY | ShiftMask, XK_F2, spawn, {.v = spotifydvoldwn}},
-	{MODKEY | ShiftMask, XK_F3, spawn, {.v = spotifydvolup}},
-	{MODKEY | ShiftMask, XK_F4, spawn, {.v = spotifydmute}},
+	//{MODKEY | ShiftMask, XK_F2, spawn, {.v = spotifydvoldwn}},
+	//{MODKEY | ShiftMask, XK_F3, spawn, {.v = spotifydvolup}},
+	//{MODKEY | ShiftMask, XK_F4, spawn, {.v = spotifydmute}},
 
 	// Brightness
 	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
