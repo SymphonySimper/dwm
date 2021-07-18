@@ -77,7 +77,7 @@ static const Rule rules[] = {
 	{BROWSER, NULL, NULL, 1 << 1, 0, 0, 0, -1},
 	{"qutebrowser", NULL, NULL, 1 << 1, 0, 0, 0, -1},
 	{"Code", NULL, NULL, 1 << 2, 0, 0, 0, -1},
-	{"mpv", NULL, NULL, 1 << 3, 0, 0, 0, -1},
+//	{"mpv", NULL, NULL, 1 << 3, 0, 0, 0, -1},
 	{"Brave-browser", NULL, NULL, 1 << 3, 0, 0, 0, -1},
 	{"discord", NULL, NULL, 1 << 4, 0, 0, 0, -1},
 	{"Pcmanfm", NULL, NULL, 1 << 6, 0, 0, 0, -1},
@@ -109,28 +109,6 @@ static const float mfact = 0.55;  // factor of master area size [0.05..0.95]
 static const int nmaster = 1;	  // number of clients in master area
 static const int resizehints = 1; // 1 means respect size hints in tiled resizals
 
-// Volume Control
-static const char *upvol[] = {"volume", "-u", NULL};
-static const char *downvol[] = {"volume", "-d", NULL};
-static const char *mutevol[] = {"volume", "-m", NULL};
-
-//Spotifyd volume
-//static const char *spotifydvolup[] = {"spotifydVol", "-u", NULL};
-//static const char *spotifydvoldwn[] = {"spotifydVol", "-d", NULL};
-//static const char *spotifydmute[] = {"spotifydVol", "-m", NULL};
-
-// Brightness Control
-static const char *brupcmd[] = {"brightness", "-u", NULL};
-static const char *brdowncmd[] = {"brightness", "-d", NULL};
-
-//Take Screenshot
-static const char *printscreen[] = {"screenshot", "-s", NULL};
-static const char *printwindow[] = {"screenshot", "-w", NULL};
-static const char *printregion[] = {"screenshot", "-r", NULL};
-
-//Date/Time/Battery show
-static const char *myinfo[] = {"myInfo", NULL};
-
 static const Layout layouts[] = {
 	// symbol     arrange function
 	{"    ", tile},
@@ -158,29 +136,9 @@ static const Layout layouts[] = {
 // commands
 static char dmenumon[2] = "0"; // component of dmenucmd, manipulated in spawn()
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, NULL};
-static const char *termcmd[] = {TERMINAL, NULL};
-static const char *browsercmd[] = {BROWSER, NULL};
-static const char *gamemodecmd[] = {"gameMode", NULL};
-static const char *roficmd[] = {"rofi", "-show", "run", NULL};
-static const char *rofieditcmd[] = {"rofiEdit", NULL};
-static const char *searchcmd[] = {"rofiOpen", NULL};
 
 static Key keys[] = {
 	// modifier                     key        function        argument
-
-	// Opens Rofi
-	{MODKEY, XK_p, spawn, {.v = roficmd}},
-	{MODKEY, XK_e, spawn, {.v = rofieditcmd}},
-
-	// Opens Dmenu
-	{MODKEY | ShiftMask, XK_t, spawn, {.v = dmenucmd}},
-	
-	// Opens Terminal
-	{MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
-
-	// Open Firefox 
-	{MODKEY | ShiftMask, XK_f, spawn, {.v = browsercmd}},
-
 	// Show/Hide Bar
 	{MODKEY | ShiftMask, XK_b, togglebar, {0}},
 
@@ -246,30 +204,6 @@ static Key keys[] = {
 	{MODKEY | ShiftMask, XK_j, rotatestack, {.i = +1}},
 	{MODKEY | ShiftMask, XK_k, rotatestack, {.i = -1}},
 
-	// Volume 
-	{MODKEY, XK_F2, spawn, {.v = downvol}},
-	{MODKEY, XK_F3, spawn, {.v = upvol}},
-	{MODKEY, XK_F4, spawn, {.v = mutevol}},
-	
-	//Spotifyd Volume
-	//{MODKEY | ShiftMask, XK_F2, spawn, {.v = spotifydvoldwn}},
-	//{MODKEY | ShiftMask, XK_F3, spawn, {.v = spotifydvolup}},
-	//{MODKEY | ShiftMask, XK_F4, spawn, {.v = spotifydmute}},
-
-	// Brightness
-	{MODKEY, XK_F5, spawn, {.v = brupcmd}},
-	{MODKEY, XK_F6, spawn, {.v = brdowncmd}},
-
-	// Take Screenshot using maim
-	{0, XK_Print, spawn, {.v = printscreen}},
-	{MODKEY | ShiftMask, XK_a, spawn, {.v = printwindow}},
-	{MODKEY | ShiftMask, XK_s, spawn, {.v = printregion}},
-
-	// Run scripts
-	{MODKEY | ShiftMask, XK_p, spawn, {.v = gamemodecmd}},
-	{MODKEY, XK_s, spawn, {.v = searchcmd}},
-	{MODKEY, XK_b, spawn, {.v = myinfo}},
-
 	TAGKEYS(XK_1, 0)
 	TAGKEYS(XK_2, 1)
 	TAGKEYS(XK_3, 2)
@@ -307,7 +241,7 @@ static Key keys[] = {
 
 	// Restart and Quit dwm
 	{MODKEY | ShiftMask, XK_q, quit, {0}},
-	{MODKEY | ShiftMask, XK_r, quit, {1}},
+	{MODKEY , XK_r, quit, {1}},
 };
 
 // button definitions
@@ -317,7 +251,6 @@ static Button buttons[] = {
 	{ClkLtSymbol, 0, Button1, setlayout, {0}},
 	{ClkLtSymbol, 0, Button3, setlayout, {.v = &layouts[2]}},
 	{ClkWinTitle, 0, Button2, zoom, {0}},
-	{ClkStatusText, 0, Button2, spawn, {.v = termcmd}},
 	{ClkClientWin, MODKEY, Button1, movemouse, {0}},
 	{ClkClientWin, MODKEY, Button2, togglefloating, {0}},
 	{ClkClientWin, MODKEY, Button3, resizemouse, {0}},
